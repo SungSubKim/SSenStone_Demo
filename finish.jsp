@@ -9,6 +9,6 @@
 <body>
 결제가 완료되었습니다.
     <h1>
-      <input type="submit" value="뒤로" onclick= 'document.location.href = "index.jsp"'>
+      <input type="submit" value="확인" onclick= 'document.location.href = "index.jsp"'>
 </body>
 </html>
