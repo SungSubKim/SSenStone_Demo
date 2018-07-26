@@ -28,7 +28,18 @@
 	        받는 사람 이름<br>
 	        <input type = "text" id = "USERID" width = 15 name = "RECIEVER"><br>
 	        은행명<br>
-	        <input type = "text" id = "COTP" width = 15 name = "BANK"><br>
+	    <select id = "COTP" width = 15 name = "BANK"><br>
+        <option value="우리은행"selected>우리은행
+        <option value="신한은행">신한은행
+        <option value="국민은행">국민은행
+        <option value="기업은행">기업은행
+        <option value="농협은행">농협은행
+        <option value="KEB하나은행">KEB하나은행
+        <option value="한국씨티은행">한국씨티은행
+        <option value="SC제일은행">SC제일은행
+        </select>
+        <br>
+        
 	        계좌번호<br>
 	        <input type = "text" id = "USERID" width = 15 name = "ACCOUNT"><br>
 	        금액<br>

@@ -87,20 +87,20 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 	           
-	           data : JSON.stringify({ "USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","CNT":nCnt }) ,
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
 
 	           success : function(data) {
         	   	  nCnt++;
         	   	  //alert(data);
         	   	  if(data.RESULT == "SUCCESS") {
                   	  alert('로그인이 완료되었습니다.');
-                  	  window.opener.location = "<%=request.getContextPath()%>/ssb/main.jsp";
+                  	  document.location.href = "finish.jsp";
 	                  self.close();
                   }
         	   	  else {
 	                  if(data.indexOf("SUCCESS") >= 0) {
 	                	  alert('로그인이 완료되었습니다.');
-	            		  window.opener.location = "<%=request.getContextPath()%>/ssb/main.jsp";
+	                	  document.location.href ="finish.jsp";
 	                	  self.close();
 	            	  }
 	            	  else {

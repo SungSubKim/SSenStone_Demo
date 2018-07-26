@@ -92,8 +92,8 @@ $(document).ready(function() {
 	           url : 'https://www.ssenstone.net:8443/ssb/svr/LoginProcess.do',
 			   
 	           contentType : 'application/json; charset=UTF-8',
-	           
-	           data : JSON.stringify({ "USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","CNT":nCnt }) ,
+
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
 
 	           success : function(data) {
         	   	  nCnt++;
