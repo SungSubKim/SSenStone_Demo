@@ -25,8 +25,8 @@
         <h2>대출</h2>
         <br>대출 상품
         <select name="GOODS" size="1" >
-        <option selected>바로바로론
-        <option >1
+        <option value="바로바로론"selected>바로바로론
+        <option value="러시앤캐시">러시앤캐시
         </select>
      	<br>대출 금액
         <input type="text" size="15" name = "AMOUNT"><br>
@@ -34,8 +34,8 @@
         <input type="text" size="15" name = "RATIO"><br>
         <br>상환 방식
         <select name="KIND" size="1" >
-        <option selected>원리금균등분할상환
-        <option >1
+        <option value="원리금균등분할상환" selected>원리금균등분할상환
+        <option value="원금분할상환">원금분할상환
         </select><br><br>
         <input type="submit" value="대출하기" onclick = "goToLoading(4);">
       </span>

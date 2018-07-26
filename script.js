@@ -14,11 +14,11 @@ function goToLoading(num) {
 	   }
 	   //보험
 	   else if(num===3) {
-	      url = "loading_loan.jsp";
+	      url = "loading_insur.jsp";
 	   }
 	   //대출
 	   else {
-	      url = "loading_insur.jsp";
+	      url = "loading_loan.jsp";
 	   }
 	   form1.acceptCharset = 'utf-8';
 	   form1.action = url;
