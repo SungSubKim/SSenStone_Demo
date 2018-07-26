@@ -1,8 +1,8 @@
 a {
   text-decoration: none;
   color:black;
-}  /*�븯�씠�띁留곹겕�쓽 諛묒쨪�쓣 �뾾�븷怨� 湲��옄�깋�쓣 寃��젙�깋�쑝濡� 留뚮벊�땲�떎*/
-ol {
+} 
+ol, ul {
   padding-top: 20px;
   margin : 0;
   border-right:gray solid 2px;
@@ -13,6 +13,14 @@ h1 {
   padding-bottom: 0px;
   margin:0;
 }
+.bank {
+	display:block; 
+	margin-left:auto; 
+	margin-right: auto;
+ 	 border-bottom: gray solid 3px;
+  	padding-bottom: 0px;
+ 	margin:0;
+}	
 .indexgrid {
   width:200px;
   grid:130px 130px/ 130px 130px;
@@ -25,6 +33,7 @@ h1 {
   display: grid;
   grid-template-columns: 150px auto;
   margin:0;
+  height: 500px;
 }
 #task {
   padding-left: 20px;
