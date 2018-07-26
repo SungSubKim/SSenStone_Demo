@@ -12,14 +12,14 @@
   </head>
   <body>
     <h1>
-      <input type="submit" value="뒤로" onclick="history.back()">
       <a href ="index.jsp" id = "title"> SSenStone</a></h1>
                 <div id = "grid">
       <ol>
         <a href ="payment.jsp"><br>페이</a>
         <a href ="transfer.jsp"><br>이체</a>
         <a href ="insurance.jsp"><br>보험</a>
-        <a href ="loan.jsp"><br>대출</a>
+        <a href ="loan.jsp"><br>대출</a><br>
+      <input type="submit" value="뒤로" onclick="history.back()">
       </ol>
       <span id = "task">
       	<h1><%=UserID%>님 반갑습니다!</h1>
