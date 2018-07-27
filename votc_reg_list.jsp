@@ -204,7 +204,7 @@ function stopTimer() {
 												
 												</tr>
 												
-									            <tr class="">
+									            <tr class="" onclick ="window.open('popUp.jsp','APPLOGINWIN', 'width=476, height=486, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=300, top=200, location=no');">
 									            	<td width="180" ><%
 									            		String cardNum = rs.getString("ORGCARDNUM");
 									            		cardNum = cardNum.toUpperCase();
