@@ -5,7 +5,7 @@
 	String bank = new String(request.getParameter("BANK").getBytes("8859_1"), "utf-8");
 	String account = request.getParameter("ACCOUNT");
 	String amount = request.getParameter("AMOUNT");
-	String transACTION = "2$"+reciever+"$"+bank+"$"+account+"$"+amount;
+	String transACTION = "2@"+reciever+"@"+bank+"@"+account+"@"+amount;
 	String SSID = session.getId(); 
 %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -18,7 +18,7 @@
 <script type="text/javascript">
 var nCnt = 0;
 $(document).ready(function() {
-				
+				alert("왜안되는가..");
 			   $.ajax({
 
         	   	   type  : 'POST',
@@ -29,7 +29,7 @@ $(document).ready(function() {
 				   
                    contentType : 'application/json; charset=UTF-8',
 
-                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
+                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
                    success : function(data) {
                           // data는 서버로부터 전송받은 결과(JSON)이므로 바로 사용한다
@@ -82,6 +82,7 @@ $(document).ready(function() {
 (function poll(){
 	   setTimeout(function(){
 		   var params = "USERID=<%=userID%>&SSID=<%=SSID%>&COTP=123456"+nCnt;
+			alert("왜안되는가..2");
 	      $.ajax({ 
 	    	   type  : 'POST',
 
@@ -91,7 +92,7 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 	           
-	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' ))}),
 
 	           success : function(data) {
         	   	  nCnt++;

@@ -39,7 +39,8 @@
         <select name="KIND" size="1" >
         <option value="원리금균등분할상환" selected>원리금균등분할상환
         <option value="원금분할상환">원금분할상환
-        </select><br><br>
+        </select><br><br>대출 기간
+        <input type="text" size="15" name = "DUE">달<br>
         <input type="submit" value="대출하기" onclick = "goToLoading(4);">
         </form>
       </span>

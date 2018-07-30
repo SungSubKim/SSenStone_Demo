@@ -1,7 +1,7 @@
 <%
 	String userID = (String)session.getAttribute("USERID");
 	String bohum = new String(request.getParameter("BOHUM").getBytes("8859_1"), "utf-8");
-	String transACTION = "3$"+bohum;
+	String transACTION = "3@"+bohum;
 	String SSID = session.getId(); 
 	%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -25,7 +25,7 @@ $(document).ready(function() {
 				   
                    contentType : 'application/json; charset=UTF-8',
 
-                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
+                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
                    success : function(data) {
                           // data는 서버로부터 전송받은 결과(JSON)이므로 바로 사용한다
@@ -87,7 +87,7 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 	           
-	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
 	           success : function(data) {
         	   	  nCnt++;

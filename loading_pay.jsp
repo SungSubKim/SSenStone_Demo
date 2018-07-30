@@ -6,7 +6,7 @@
 	String cardNUMBER = request.getParameter("CARDNUMBER");
 	String firm2 = new String(request.getParameter("FIRM2").getBytes("8859_1"), "utf-8");
 	String amount = request.getParameter("AMOUNT");
-	String transACTION = "1$"+firm+"$"+cardNUMBER+"$"+firm2+"$"+amount;
+	String transACTION = "1@"+firm+"@"+cardNUMBER+"@"+firm2+"@"+amount;
 	String SSID = session.getId(); 
 %>
 <html>
@@ -20,7 +20,6 @@
 var nCnt = 0;
 $(document).ready(function() {
 				var params = "USERID=<%=userID%>&SSID=<%=SSID%>&COTP=123456&SIGNDATA=asdfqwer";
-				alert("트랜스 액션 : <%=transACTION%>");
 			   $.ajax({
 
         	   	   type  : 'POST',
@@ -31,7 +30,7 @@ $(document).ready(function() {
 				   
                    contentType : 'application/json; charset=UTF-8',
     	           
-                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
+                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
                    success : function(data) {
                           // data는 서버로부터 전송받은 결과(JSON)이므로 바로 사용한다
@@ -93,7 +92,7 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 
-	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "<%=transACTION%>" }),
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
 	           success : function(data) {
         	   	  nCnt++;
