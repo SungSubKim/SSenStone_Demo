@@ -7,7 +7,7 @@
 %>
 <script src="<%=request.getContextPath()%>/resources/js/jquery-1.11.0.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/jquery-qrcode.min.js"></script>
-
+<meta charset="EUC-KR">
 <title>Payment</title>
     <meta charset="utf-8">
     <link rel = "stylesheet" href = "style2.css">
@@ -21,8 +21,9 @@
           <a href ="payment.jsp"><br>페이</a>
           <a href ="transfer.jsp"><br>이체</a>
           <a href ="insurance.jsp"><br>보험</a>
-          <a href ="loan.jsp"><br>대출</a><br>
-     	 <input type="submit" value="뒤로" onclick="history.back()">
+          <a href ="loan.jsp"><br>대출</a>
+          <br>
+          <input type="submit" value="뒤로" onclick="history.back()">
       </ol>
       <span id = "task">
       	<h1><%=UserID%>님 반갑습니다!</h1>
@@ -40,6 +41,7 @@
 	        <input type = "radio" name = "FIRM" id = "FIRM" value = "롯데카드">롯데카드 </p>
 	        <p>카드번호 <input type = "text" size  = "20" name = "CARDNUMBER" ><br></p>
 	        <p>거래처 <input type = "text" size  = "20" name = "FIRM2"><br></p>
+	        <p>상품명<input type = "text" size  = "20" name = "PRODUCT"><br></p>
 	        <p>금액 <input type = "text" size  = "20" name = "AMOUNT">원<br></p>
 	        <input type = "submit" value = "결제하기" onclick="goToLoading(1);">
         </form>

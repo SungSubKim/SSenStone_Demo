@@ -5,7 +5,8 @@
 	String bank = new String(request.getParameter("BANK").getBytes("8859_1"), "utf-8");
 	String account = request.getParameter("ACCOUNT");
 	String amount = request.getParameter("AMOUNT");
-	String transACTION = "2@"+reciever+"@"+bank+"@"+account+"@"+amount;
+	String account_send = request.getParameter("ACCOUNT_SEND");
+	String transACTION = "2@"+reciever+"@"+bank+"@"+account+"@"+amount+"@"+account_send; 
 	String SSID = session.getId(); 
 %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -18,7 +19,7 @@
 <script type="text/javascript">
 var nCnt = 0;
 $(document).ready(function() {
-				alert("왜안되는가..");
+				
 			   $.ajax({
 
         	   	   type  : 'POST',
@@ -29,8 +30,8 @@ $(document).ready(function() {
 				   
                    contentType : 'application/json; charset=UTF-8',
 
-                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
-
+                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "window.btoa( encodeURIComponent( '<%=transACTION%>' ))" }),
+                   
                    success : function(data) {
                           // data는 서버로부터 전송받은 결과(JSON)이므로 바로 사용한다
                           var resutlStr = data;
@@ -82,7 +83,6 @@ $(document).ready(function() {
 (function poll(){
 	   setTimeout(function(){
 		   var params = "USERID=<%=userID%>&SSID=<%=SSID%>&COTP=123456"+nCnt;
-			alert("왜안되는가..2");
 	      $.ajax({ 
 	    	   type  : 'POST',
 
@@ -92,25 +92,28 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 	           
-	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' ))}),
-
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "window.btoa( encodeURIComponent( '<%=transACTION%>' ))" }),
+	           
+	           
+	           
+	           
 	           success : function(data) {
         	   	  nCnt++;
         	   	  //alert(data);
         	   	  if(data.RESULT == "SUCCESS") {
-                  	  alert('로그인이 완료되었습니다.');
+                  	  alert('이체가 완료되었습니다.');
                   	  document.location.href = "finish.jsp";
 	                  self.close();
                   }
         	   	  else {
 	                  if(data.indexOf("SUCCESS") >= 0) {
-	                	  alert('로그인이 완료되었습니다.');
+	                	  alert('이체가 완료되었습니다.');
 	                	  document.location.href ="finish.jsp";
 	                	  self.close();
 	            	  }
 	            	  else {
 	            		  if(nCnt > 90) {
-		            		  alert('로그인 시간이 초과되었습니다. 다시 시도해 주세요');
+		            		  alert('이체 시간이 초과되었습니다. 다시 시도해 주세요');
 		            		  window.opener.location = "<%=request.getContextPath()%>/ssb/loginMain.jsp";
 		                	  self.close();
 	            		  }

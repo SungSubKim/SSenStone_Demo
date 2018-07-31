@@ -18,13 +18,16 @@
         <a href ="payment.jsp"><br>페이</a>
         <a href ="transfer.jsp"><br>이체</a>
         <a href ="insurance.jsp"><br>보험</a>
-        <a href ="loan.jsp"><br>대출</a><br>
-      <input type="submit" value="뒤로" onclick="history.back()">
+        <a href ="loan.jsp"><br>대출</a>
+        <br>
+        <input type="submit" value="뒤로" onclick="history.back()">
       </ol>
       <span id = "task">
       	<h1><%=UserID%>님 반갑습니다!</h1>
-      	
+
       	<form name="form1" id="form1" action="" method="post" onsubmit="return false;">
+     	내 계좌번호<br>
+	        <input type = "text" id = "USERID" width = 15 name = "ACCOUNT_SEND"><br>
 	        받는 사람 이름<br>
 	        <input type = "text" id = "USERID" width = 15 name = "RECIEVER"><br>
 	        은행명<br>
