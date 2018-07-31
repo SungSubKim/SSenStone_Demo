@@ -199,7 +199,8 @@ function stopTimer() {
                                     
                                     </tr>
                                     
-                                       <tr class="" onclick ="window.open('popUp.jsp?signature=<%=rs.getString("SIGNATURE")%>&userid=<%=rs.getString("USERID")%>&authdatetime=<%=rs.getString("AUTHDATETIME")%>','APPLOGINWIN', 'width=750, height=486, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=300, top=100, location=no');">
+                                      <tr class="" onclick ="window.open('popUp.jsp?signature=<%=rs.getString("SIGNATURE")%>&userid=<%=rs.getString("USERID")%>&authdatetime=<%=rs
+.getString("AUTHDATETIME")%>','APPLOGINWIN', 'width=700, height=800, resizable=0, scrollbars=no, status=0, titlebar=0, toolbar=0, left=300, top=200, location=no');">
                                           <td width="180" ><%
                                              String userid = rs.getString("USERID");
                                              out.println(rs.getString("userid"));
@@ -235,7 +236,7 @@ function stopTimer() {
                                           }
                                           else
                                           {
-                                             out.println("패턴인증!"+rs.getString("authtype"));
+                                             out.println("오류!"+rs.getString("authtype"));
                                           }
                                           %>
                                           </td>
