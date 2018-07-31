@@ -16,8 +16,8 @@
       <ol>
         <a href ="payment.jsp"><br>페이</a>
         <a href ="transfer.jsp"><br>이체</a>
-        <a href ="insurance.jsp"><br>보험</a>
         <a href ="loan.jsp"><br>대출</a>
+        <a href ="insurance.jsp"><br>보험</a>
         <br>
         <input type="submit" value="뒤로" onclick="history.back()">
       </ol>
