@@ -5,12 +5,9 @@
 	String firm = new String(request.getParameter("FIRM").getBytes("8859_1"), "utf-8");
 	String cardNUMBER = request.getParameter("CARDNUMBER");
 	String firm2 = new String(request.getParameter("FIRM2").getBytes("8859_1"), "utf-8");
-	String product = new String(request.getParameter("PRODUCT").getBytes("8859_1"), "utf-8");
 	String amount = request.getParameter("AMOUNT");
-	String transACTION = "1@"+firm+"@"+cardNUMBER+"@"+firm2+"@"+product+"@"+amount;
+	String transACTION = "1@"+firm+"@"+cardNUMBER+"@"+firm2+"@"+amount+"@web";
 	String SSID = session.getId(); 
-	
-	 request.setCharacterEncoding("UTF-8");
 %>
 <html>
 <head>
@@ -23,7 +20,6 @@
 var nCnt = 0;
 $(document).ready(function() {
 				var params = "USERID=<%=userID%>&SSID=<%=SSID%>&COTP=123456&SIGNDATA=asdfqwer";
-				alert("트랜스 액션 : "+window.btoa( encodeURIComponent( '<%=transACTION%>' )) );
 			   $.ajax({
 
         	   	   type  : 'POST',
@@ -34,7 +30,7 @@ $(document).ready(function() {
 				   
                    contentType : 'application/json; charset=UTF-8',
     	           
-                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "window.btoa( encodeURIComponent( '<%=transACTION%>' ))" }),
+                   data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
                    success : function(data) {
                           // data는 서버로부터 전송받은 결과(JSON)이므로 바로 사용한다
@@ -96,25 +92,25 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 
-	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : "window.btoa( encodeURIComponent( '<%=transACTION%>' ))" }),
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
 	           success : function(data) {
         	   	  nCnt++;
         	   	  //alert(data);
         	   	  if(data.RESULT == "SUCCESS") {
-                  	  alert('결제가 완료되었습니다.');
+                  	  alert('로그인이 완료되었습니다.');
                   	  document.location.href = "finish.jsp";
 	                  self.close();
                   }
         	   	  else {
 	                  if(data.indexOf("SUCCESS") >= 0) {
-	                	  alert('결제가 완료되었습니다.');
+	                	  alert('로그인이 완료되었습니다.');
 	                	  document.location.href ="finish.jsp";
 	                	  self.close();
 	            	  }
 	            	  else {
 	            		  if(nCnt > 90) {
-		            		  alert('결제 시간이 초과되었습니다. 다시 시도해 주세요');
+		            		  alert('로그인 시간이 초과되었습니다. 다시 시도해 주세요');
 		            		  window.opener.location = "<%=request.getContextPath()%>/ssb/loginMain.jsp";
 		                	  self.close();
 	            		  }

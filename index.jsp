@@ -1,10 +1,21 @@
+ <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+ <%
+   String UserID = (String)session.getAttribute("USERID");
+   
+   if(UserID==null) {
+      String URL = request.getContextPath()+"/ssb/loginMain.jsp";
+      response.sendRedirect(URL);
+   }
+   else if(UserID.equals("admin")) {
+      String URL = request.getContextPath()+"/index_admin.jsp";
+      response.sendRedirect(URL);
+   }
+%>
 <!DOCTYPE html>
 <html>
   <head>
     <title>SSenStone Demo Bank - Main</title> 
-    <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%><%
-	String UserID = (String)session.getAttribute("USERID");
-%>
+   
     <link rel = "stylesheet" href = "style2.css">
     <style>
     a {
@@ -16,13 +27,12 @@
     width : 300px;
     margin : 0 auto;
     } 
-    </style>"WebContent/index.jsp"
+    </style>
   </head>
   <body>
   <br>
   <img src = "logo.png"><br>
   <br><%=UserID %>님 환영합니다.
-  <a href ="votc_reg_list.jsp">관리자페이지</a>
     <span class = "indexgrid">
       <a href ="payment.jsp"><br>페이</a>
         <a href ="transfer.jsp"><br>이체</a>

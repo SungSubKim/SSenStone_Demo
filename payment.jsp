@@ -39,10 +39,14 @@
 	        <input type = "radio" name = "FIRM" id = "FIRM"  value = "국민카드">국민카드 &nbsp
 	        <input type = "radio" name = "FIRM" id = "FIRM"  value = "하나카드">하나카드 &nbsp
 	        <input type = "radio" name = "FIRM" id = "FIRM" value = "롯데카드">롯데카드 </p>
-	        <p>카드번호 <input type = "text" size  = "20" name = "CARDNUMBER" ><br></p>
-	        <p>거래처 <input type = "text" size  = "20" name = "FIRM2"><br></p>
-	        <p>상품명<input type = "text" size  = "20" name = "PRODUCT"><br></p>
-	        <p>금액 <input type = "text" size  = "20" name = "AMOUNT">원<br></p>
+	        <p>카드번호 <br>
+	        <input type = "text" size  = "20" name = "CARDNUMBER" ><br></p>
+	        <p>거래처 <br>
+	        <input type = "text" size  = "20" name = "FIRM2"><br></p>
+	        <p>상품명<br>
+	        <input type = "text" size  = "20" name = "PRODUCT"><br></p>
+	        <p>금액 <br>
+	        <input type = "text" size  = "20" name = "AMOUNT">원<br></p>
 	        <input type = "submit" value = "결제하기" onclick="goToLoading(1);">
         </form>
         </span>

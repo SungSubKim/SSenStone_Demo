@@ -1,3 +1,4 @@
+
 <%
 	String userID = (String)session.getAttribute("USERID");
 	String goods = new String(request.getParameter("GOODS").getBytes("8859_1"), "utf-8");
@@ -5,7 +6,7 @@
 	String ratio = request.getParameter("RATIO");
 	String kind = new String(request.getParameter("KIND").getBytes("8859_1"), "utf-8");
 	String due = request.getParameter("DUE");
-	String transACTION = "4@"+goods+"@"+amount+"@"+ratio+"@"+kind+"@"+due;
+	String transACTION = "3@"+goods+"@"+amount+"@"+ratio+"@"+kind+"@"+due+"@web";
 	String SSID = session.getId(); 
 %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
@@ -18,8 +19,6 @@
 <script type="text/javascript">
 var nCnt = 0;
 $(document).ready(function() {
-				alert("트랜스 액션 : <%=transACTION%>");
-				
 			   $.ajax({
 
         	   	   type  : 'POST',
@@ -29,13 +28,14 @@ $(document).ready(function() {
                    url : 'https://www.ssenstone.net:8443/ssb/svr/UserLogin.do',
 				   
                    contentType : 'application/json; charset=UTF-8',
-    	           
+
                    data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
 
                    success : function(data) {
                           // data는 서버로부터 전송받은 결과(JSON)이므로 바로 사용한다
                           var resutlStr = data;
                           if(data.RESULT == "SUCCESS") {
+                        	  alert("<%=transACTION%>");
                         	  poll();
                     	  }
                     	  else {
@@ -92,7 +92,7 @@ $(document).ready(function() {
 			   
 	           contentType : 'application/json; charset=UTF-8',
 	           
-	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' )) }),
+	           data : JSON.stringify({ "AUTHPURPOSE":"1","USERID":"<%=userID%>","SSID":"<%=SSID%>","COTP":"123456","TRANSACTION" : window.btoa( encodeURIComponent( '<%=transACTION%>' ))}),
 
 	           success : function(data) {
         	   	  nCnt++;
